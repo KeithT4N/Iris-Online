@@ -287,25 +287,30 @@
 
 
         <!--Pagination-->
+        <!-- Note: We do not paginate search. -->
         {% if products.paginator.num_pages > 1 %}
 
-            <nav class="ml-auto mr-auto p-5">
-                <ul class="pagination">
+            <nav class="d-flex p-5 w-100">
+                <ul class="pagination ml-auto mr-auto ">
                     {% if products.has_previous %}
-                        <li class="page-item"><a class="page-link" href="?page={{ products.previous_page_number }}">Previous</a>
+                        <li class="page-item">
+                            <button class="page-link">Previous</button>
                         </li>
                     {% endif %}
 
                     {% for i in products.paginator.page_range %}
                         {% if i == products.number %}
-                            <li class="page-item active"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+                            <li class="page-item active">
+                                <button class="page-link">{{ i }}</button></li>
                         {% else %}
-                            <li class="page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+                            <li class="page-item">
+                                <button class="page-link">{{ i }}</button></li>
                         {% endif %}
                     {% endfor %}
 
                     {% if products.has_next %}
-                        <li class="page-item"><a class="page-link" href="?page={{ products.next_page_number }}">Next</a>
+                        <li class="page-item">
+                            <button class="page-link">Next</button>
                         </li>
                     {% endif %}
                 </ul>
